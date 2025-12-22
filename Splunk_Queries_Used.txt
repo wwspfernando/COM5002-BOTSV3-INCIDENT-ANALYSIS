@@ -1,0 +1,13 @@
+ Splunk Queries Used (BOTSv3)
+
+1. Index discovery:
+   index=botsv3 | stats count by sourcetype
+
+2. Suspicious process activity:
+   index=botsv3 sourcetype=XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
+   | stats count by Image
+
+3. DNS analysis:
+   index=botsv3 sourcetype=dns
+   | stats count by query
+
