@@ -1,13 +1,39 @@
- Splunk Queries Used (BOTSv3)
+Updated  queries for BOTSv3 analysis
+ 
+Splunk Search Processing Language (SPL) Queries Used
 
-1. Index discovery:
-   index=botsv3 | stats count by sourcetype
+This document lists all Splunk SPL queries executed during the SOC investigation of the BOTSv3 dataset.
 
-2. Suspicious process activity:
-   index=botsv3 sourcetype=XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
-   | stats count by Image
+1. Overview of data sources available in the BOTSv3 index
 
-3. DNS analysis:
-   index=botsv3 sourcetype=dns
-   | stats count by query
+index=botsv3 | stats count by sourcetype | sort - count
+
+
+2. Identification of executable and script-based activity
+
+index=botsv3 (cmd.exe OR wmic.exe OR powershell.exe)
+
+
+3. Tabular view of suspicious command execution activity
+
+index=botsv3 (cmd.exe OR wmic.exe OR powershell.exe)
+| table _time user UserName AccountName Process_Name Image CommandLine
+
+
+4. Counting executable activity by user account
+
+index=botsv3 (cmd.exe OR wmic.exe OR powershell.exe)
+| stats count by user
+| sort - count
+
+
+5. Timeline analysis of executable activity
+
+index=botsv3 (cmd.exe OR wmic.exe OR powershell.exe)
+| timechart count
+
+
+6. Filtering for Windows command and management utilities
+
+index=botsv3 (wmic.exe OR cmd.exe)
 
