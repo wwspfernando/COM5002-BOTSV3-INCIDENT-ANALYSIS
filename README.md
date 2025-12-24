@@ -1,0 +1,7 @@
+SOC Investigation Using Splunk (BOTSv3 Dataset)
+
+This project presents a comprehensive Security Operations Center (SOC) investigation conducted using Splunk Enterprise and the Boss of the SOC Dataset Version 3 (BOTSv3). The investigation focuses on identifying suspicious system behavior, executable misuse, and potential malicious activity within a simulated enterprise environment. Using structured log analysis and correlation techniques, multiple stages of attacker behavior were examined, including command execution, process creation, and user-related activity.
+
+The analysis was performed by executing targeted SPL queries to identify abnormal usage of Windows native utilities such as cmd.exe, wmic.exe, and powershell.exe, which are commonly abused in “Living-off-the-Land” (LotL) attacks. Visualizations, statistical analysis, and filtered search results were used to highlight execution patterns, process relationships, and time-based activity anomalies. Supporting evidence was extracted directly from Splunk and exported as CSV files to ensure investigation transparency and reproducibility.
+
+All findings are documented in the accompanying SOC Investigation Report, along with relevant screenshots and exported Splunk results. This repository includes the report, investigation screenshots, exported CSV evidence files, and a collection of SPL queries used during the analysis. Together, these artifacts demonstrate a complete end-to-end SOC investigation workflow aligned with modern threat detection and incident analysis best practices.
